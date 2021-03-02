@@ -21,7 +21,8 @@
       type="text"
       name="name"
       placeholder="Título do anúncio" 
-      value="{{product.name}}">
+      value="{{product.name}}"
+    >
   </div>
 </div>
 
@@ -33,6 +34,24 @@
 </div>
 
 <div class="item">
+  <div>Foto</div>
+  <div>
+    <div id="photos-uploud">
+      <input
+        id="photos-input"
+        type="file"
+        name="photos"
+        multiple
+        accept="image/*"
+        onchange="PhotosUploud.handleFileInput(event)"
+      >
+      <p>Selecione até 6 fotos</p>
+    </div>
+    <div id="photos-preview"></div>
+  </div>
+</div>
+
+<div class="item">
   <div>Valor</div>
   <div>
     <input
@@ -40,14 +59,16 @@
       name="price"
       placeholder="Preço do produto" 
       value="{{product.price}}"
-      onkeydown="Mask.apply(this,'formatBRL')">
+      onkeydown="Mask.apply(this,'formatBRL')"
+    >
   </div>
 
   {% if product.old_price%}
     <input
       type="hidden"
       name="old_price"
-      value="{{product.old_price}}">
+      value="{{product.old_price}}"
+    >
   {% endif %}
 </div>
 
@@ -58,7 +79,8 @@
       type="number"
       name="quantity"
       placeholder="Estoque disponível" 
-      value="{{product.quantity}}">
+      value="{{product.quantity}}"
+    >
   </div>
 </div>
 
@@ -75,7 +97,8 @@
           value="1"
           {% if product.status == "1" %}
             checked
-          {% endif %}>
+          {% endif %}
+        >
         Sim
       </span>
 
@@ -86,7 +109,8 @@
           value="0"
           {% if product.status == "0" %}
             checked
-          {% endif %}>
+          {% endif %}
+        >
         Não
       </span>
     </div>
