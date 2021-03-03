@@ -147,3 +147,38 @@ function itemFormDelete(formDelete) {
     }
   });
 }
+
+const ImageGallery = {
+  highligth: document.querySelector(".gallery .highlight > img"),
+  previews: document.querySelectorAll(".gallery-preview img"),
+  setImage(event) {
+    const { target } = event;
+
+    ImageGallery.previews.forEach((preview) => {
+      preview.classList.remove("active");
+    });
+
+    target.classList.add("active");
+
+    ImageGallery.highligth.src = target.src;
+    Ligthbox.image.src = target.src;
+  },
+};
+
+const Ligthbox = {
+  target: document.querySelector(".lightbox-target"),
+  image: document.querySelector(".lightbox-target img"),
+  closeButton: document.querySelector(".lightbox-target a.lightbox-close"),
+  open() {
+    Ligthbox.target.style.opacity = 1;
+    Ligthbox.target.style.top = 0;
+    Ligthbox.target.style.bottom = 0;
+    Ligthbox.closeButton.style.top = 0;
+  },
+  close() {
+    Ligthbox.target.style.opacity = 0;
+    Ligthbox.target.style.top = "-100%";
+    Ligthbox.target.style.bottom = "initial";
+    Ligthbox.closeButton.style.top = "-80px";
+  },
+};

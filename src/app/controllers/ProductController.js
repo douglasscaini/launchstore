@@ -132,6 +132,12 @@ module.exports = {
     product.oldPrice = formatPrice(product.old_price);
     product.price = formatPrice(product.price);
 
-    return response.render("products/show", { product });
+    results = await Product.files(product.id);
+    const files = results.rows.map((file) => ({
+      ...file,
+      src: `${request.protocol}://${request.headers.host}${file.path.replace("public", "")}`,
+    }));
+
+    return response.render("products/show", { product, files });
   },
 };
