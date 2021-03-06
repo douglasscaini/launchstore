@@ -103,7 +103,11 @@ module.exports = {
     const productId = results.rows[0].id;
 
     const filesPromise = request.files.map((file) => {
-      File.create({ ...file, product_id: productId });
+      File.create({
+        name: file.filename,
+        path: file.path.replace(/\\/g, "/"),
+        product_id: productId,
+      });
     });
 
     await Promise.all(filesPromise);

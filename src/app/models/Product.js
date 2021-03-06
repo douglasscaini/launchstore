@@ -76,4 +76,7 @@ module.exports = {
       [id]
     );
   },
+  all() {
+    return db.query(`SELECT * FROM products ORDER BY updated_at DESC`);
+  },
 };
