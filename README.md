@@ -1,4 +1,4 @@
-<h1 align="center"><img src="./.github/#" width="150px"></h1>
+<h1 align="center"><img src="./.github/logo.png" width="200px"></h1>
 
 <h3 align="center">Launchstore</h3>
 
@@ -27,16 +27,31 @@
 
 ## :warning: Instalação <a name="install"></a>
 
-```bash
-# Instalar todas as dependências necessárias:
-$ npm install
+> Esse projeto usou como SGBD o postgreSQL. Para o funcionamento é preciso realizar algumas configurações:
 
-# É preciso criar e configurar o SGBD em:
-$ /src/config/db.js
+- Criar o banco de dados:
 
-# Iniciar o projeto em localhost:
-$ npm start
+```sh
+CREATE DATABASE launchstore;
+```
 
+- Rodar as querys disponíveis em:
+
+```sh
+src/config/launchstore.sql
+```
+
+- Configurar os dados do SGBD em:
+
+```sh
+src/config/db.js
+```
+
+- Instalar as dependências e iniciar o projeto:
+
+```sh
+npm install # instala as dependências...
+npm start # roda o projeto...
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
