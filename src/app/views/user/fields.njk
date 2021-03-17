@@ -18,6 +18,7 @@
       name="email"
       placeholder="Digite seu email" 
       value="{{user.email}}"
+      onblur="Validate.apply(this, 'isEmail')"
     >
   </div>
 </div>
@@ -29,19 +30,18 @@
       type="password"
       name="password"
       placeholder="Escolha uma senha segura" 
-      value="{{user.password}}"
     >
   </div>
 </div>
 
 {% if not user.id %}
   <div class="item">
-    <div>Repetir senha</div>
+    <div>Confirmar senha</div>
     <div class="input">
       <input
       type="password"
       name="passwordRepeat"
-      placeholder="Repita a senha escolhida" 
+      placeholder="Repita a senha digitada acima" 
     >
     </div>
   </div>
@@ -55,6 +55,8 @@
       name="cpf_cnpj"
       placeholder="Digite o número de seu documento" 
       value="{{user.cpf_cnpj}}"
+      onkeydown="Mask.apply(this, 'cpfCnpj')"
+      onblur="Validate.apply(this, 'isCpfCnpj')"
     >
   </div>
 </div>
@@ -67,6 +69,8 @@
       name="cep"
       placeholder="Digite o CEP de sua cidade" 
       value="{{user.cep}}"
+      onkeydown="Mask.apply(this, 'cep')"
+      onblur="Validate.apply(this, 'isCep')"
     >
   </div>
 </div>
