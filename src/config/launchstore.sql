@@ -48,7 +48,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
 CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON products
 FOR EACH ROW
@@ -58,7 +57,6 @@ CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
-
 
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",
