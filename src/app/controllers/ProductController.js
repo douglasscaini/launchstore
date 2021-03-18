@@ -99,6 +99,8 @@ module.exports = {
       return response.send("Please, send ate least one image");
     }
 
+    request.body.user_id = request.session.userId;
+
     let results = await Product.create(request.body);
     const productId = results.rows[0].id;
 

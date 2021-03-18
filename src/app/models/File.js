@@ -2,7 +2,7 @@ const db = require("../../config/db");
 const fs = require("fs");
 
 module.exports = {
-  create({ filename, path, product_id }) {
+  create({ name, path, product_id }) {
     const query = `
       INSERT INTO files (
         name,
@@ -12,7 +12,7 @@ module.exports = {
       RETURNING id
     `;
 
-    const values = [filename, path, product_id];
+    const values = [name, path, product_id];
 
     return db.query(query, values);
   },

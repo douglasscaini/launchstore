@@ -39,7 +39,27 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
+
       return response.send("user/index", { error: "Algum erro aconteceu!" });
+    }
+  },
+
+  async delete(request, response) {
+    try {
+      await User.delete(request.body.id);
+
+      request.session.destroy();
+
+      return response.render("session/login", {
+        success: "Conta deletada com sucesso!",
+      });
+    } catch (error) {
+      console.error(error);
+
+      return response.send("user/index", {
+        user: request.body,
+        error: "Erro ao tentar deletar sua conta!",
+      });
     }
   },
 };
