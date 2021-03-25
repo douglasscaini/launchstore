@@ -1,50 +1,22 @@
-const { formatPrice, date } = require("../../lib/utils");
-
 const Product = require("../models/Product");
 
+const LoadProductsService = require("../services/LoadProductsService");
+
 module.exports = {
-  async index(request, response) {
+  async index(req, res) {
     try {
-      let results,
-        params = {};
+      let { filter, category } = req.query;
 
-      const { filter, category } = request.query;
+      if (!filter || filter.toLowerCase() == "Todos os produtos") filter = null;
 
-      if (!filter) {
-        return response.redirect("/");
-      }
+      let products = await Product.search({ filter, category });
 
-      params.filter = filter;
+      const productsPromise = products.map(LoadProductsService.format);
 
-      if (category) {
-        params.category = category;
-      }
-
-      results = await Product.search(params);
-
-      async function getImage(productId) {
-        let results = await Product.files(productId);
-
-        const files = results.rows.map(
-          (file) =>
-            `${request.protocol}://${request.headers.host}${file.path.replace("public", "")}`
-        );
-
-        return files[0];
-      }
-
-      const productsPromise = results.rows.map(async (product) => {
-        product.img = await getImage(product.id);
-        product.oldPrice = formatPrice(product.old_price);
-        product.price = formatPrice(product.price);
-
-        return product;
-      });
-
-      const products = await Promise.all(productsPromise);
+      products = await Promise.all(productsPromise);
 
       const search = {
-        term: request.query.filter,
+        term: req.query.filter || "Todos os produtos",
         total: products.length,
       };
 
@@ -56,13 +28,12 @@ module.exports = {
         .reduce((categoriesFiltered, category) => {
           const found = categoriesFiltered.some((cat) => cat.id == category.id);
 
-          if (!found) {
-            categoriesFiltered.push(category);
-          }
+          if (!found) categoriesFiltered.push(category);
+
           return categoriesFiltered;
         }, []);
 
-      return response.render("search/index", { products, search, categories });
+      return res.render("search/index", { products, categories, search });
     } catch (err) {
       console.error(err);
     }
