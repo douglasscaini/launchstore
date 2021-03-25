@@ -1,28 +1,45 @@
-const User = require("../models/User");
-
 const { hash } = require("bcryptjs");
 const crypto = require("crypto");
+
+const User = require("../models/User");
+
 const mailer = require("../../lib/mailer");
 
 module.exports = {
   loginForm(request, response) {
-    return response.render("session/login");
+    try {
+      return response.render("session/login");
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   login(request, response) {
-    request.session.userId = request.user.id;
+    try {
+      request.session.userId = request.user.id;
 
-    return response.redirect("/users");
+      return response.redirect("/users");
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   logout(request, response) {
-    request.session.destroy();
+    try {
+      request.session.destroy();
 
-    return response.redirect("/");
+      return response.redirect("/");
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   forgotForm(request, response) {
-    return response.render("session/forgot-password");
+    try {
+      return response.render("session/forgot-password");
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   async forgot(request, response) {
@@ -56,6 +73,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
+
       return response.render("session/forgot-password", {
         error: "Erro inesperado, tente novamente!",
       });
@@ -63,8 +81,13 @@ module.exports = {
   },
 
   resetForm(request, response) {
-    return response.render("session/password-reset", { token: request.query.token });
+    try {
+      return response.render("session/password-reset", { token: request.query.token });
+    } catch (error) {
+      console.log(error);
+    }
   },
+
   async reset(request, response) {
     const user = request.user;
     const { password, token } = request.body;
@@ -84,6 +107,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
+
       return response.render("session/password-reset", {
         user: request.body,
         token,
