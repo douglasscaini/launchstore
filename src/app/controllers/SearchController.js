@@ -7,15 +7,13 @@ module.exports = {
     try {
       let { filter, category } = request.query;
 
-      if (!filter || filter.toLowerCase() == "Todos os produtos") filter = null;
+      if (!filter || filter.toLowerCase() == "todos os produtos") filter = null;
 
       let products = await Product.search({ filter, category });
 
       const productsPromise = products.map(LoadProductsService.format);
 
       products = await Promise.all(productsPromise);
-
-      console.log(products);
 
       const search = {
         term: request.query.filter || "Todos os produtos",
@@ -33,6 +31,7 @@ module.exports = {
           if (!found) {
             categoriesFiltered.push(category);
           }
+
           return categoriesFiltered;
         }, []);
 
