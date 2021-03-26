@@ -13,7 +13,7 @@
 
 ## :speech_balloon: Sobre <a name="about"></a>
 
-> Launchstore é um e-commerce utilizando postgreSQL :D
+> Launchstore é um e-commerce utilizando JavaScript e postgreSQL :D
 
 <br />
 <table>
@@ -41,7 +41,7 @@ CREATE DATABASE launchstore;
 src/config/launchstore.sql
 ```
 
-- Configurar os dados do SGBD em:
+- Configurar os dados do seu SGBD em:
 
 ```sh
 src/config/db.js
@@ -54,15 +54,27 @@ npm install # instala as dependências...
 npm start # roda o projeto...
 ```
 
+- É possível popular a aplicação através do faker, para isso digite na pasta raiz:
+
+```sh
+node seed.js
+```
+
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
 > Aprender modelo MVC e todos os conceitos que se aplicam a programação web.
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 
+- Faker
+- Lottie
+- Bcrypt
+- Multer
 - Express
 - Nunjucks
+- Nodemailer
 - PostgreSQL
+- Express Session
 
 ---
 
