@@ -43,6 +43,8 @@ module.exports = {
                   `;
       }
 
+      query += `AND status != 0`;
+
       const results = await db.query(query);
 
       return results.rows;
