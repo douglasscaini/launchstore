@@ -84,7 +84,7 @@ footer {
 
 header div.container {
   display: grid;
-  grid-template-columns: 220px 1fr 280px;
+  grid-template-columns: 220px 1fr 315px;
   align-items: center;
   grid-gap: 24px;
 }

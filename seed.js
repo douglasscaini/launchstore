@@ -39,7 +39,7 @@ async function createProducts() {
       name: faker.name.title(),
       description: faker.lorem.paragraph(Math.ceil(Math.random() * 10)),
       old_price: faker.random.number(99999),
-      price: faker.random.number(99),
+      price: faker.random.number(9999),
       quantity: faker.random.number(99),
       status: Math.round(Math.random()),
     });
