@@ -53,7 +53,7 @@ src/config/db.js
 npm install
 ```
 
-- É possível popular a aplicação com produtos fakes através do FAKER JS, para isso digite na pasta raiz:
+- Popule a aplicação com produtos fakes. Para isso digite na pasta raiz:
 
 ```sh
 node seed.js
@@ -64,6 +64,8 @@ node seed.js
 ```sh
 npm start
 ```
+
+> Visualizando a tabela users (dica: use o postbird) você poderá logar no sistema com qualquer um dos emails cadastrados. Use a senha: `123`
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
