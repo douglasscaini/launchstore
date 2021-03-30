@@ -21,13 +21,13 @@
     <td colspan="1">Desktop</td>
   </tr>
   <tr>
-    <td><img src="./.github/#" width=1000px /></td></td>
+    <td><img src="./.github/gif.gif" width=1000px /></td></td>
   </tr>
 </table>
 
 ## :warning: Instalação <a name="install"></a>
 
-> Esse projeto usou como SGBD o postgreSQL. Para o funcionamento é preciso realizar algumas configurações:
+> Esse projeto usou como SGBD o postgreSQL e para seu funcionamento é preciso realizar algumas configurações:
 
 - Criar o banco de dados:
 
@@ -47,17 +47,22 @@ src/config/launchstore.sql
 src/config/db.js
 ```
 
-- Instalar as dependências e iniciar o projeto:
+- Instalar as dependências:
 
 ```sh
-npm install # instala as dependências...
-npm start # roda o projeto...
+npm install
 ```
 
-- É possível popular a aplicação através do faker, para isso digite na pasta raiz:
+- É possível popular a aplicação com produtos fakes através do FAKER JS, para isso digite na pasta raiz:
 
 ```sh
 node seed.js
+```
+
+- Rode o projeto:
+
+```sh
+npm start
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>

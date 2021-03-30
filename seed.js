@@ -34,12 +34,12 @@ async function createProducts() {
 
   while (products.length < totalProducts) {
     products.push({
-      category_id: Math.ceil(Math.random() * 3),
+      category_id: Math.ceil(Math.random() * 5),
       user_id: usersIds[Math.floor(Math.random() * totalUsers)],
       name: faker.name.title(),
       description: faker.lorem.paragraph(Math.ceil(Math.random() * 10)),
-      old_price: faker.random.number(99999),
-      price: faker.random.number(9999),
+      old_price: faker.random.number(999999),
+      price: faker.random.number(99999),
       quantity: faker.random.number(99),
       status: Math.round(Math.random()),
     });
@@ -54,7 +54,7 @@ async function createProducts() {
   while (files.length < 50) {
     files.push({
       name: faker.image.image(),
-      path: `public/images/placeholder.png`,
+      path: `public/images/imagem-${Math.floor(Math.random() * 20)}.jpg`,
       product_id: productsIds[Math.floor(Math.random() * totalProducts)],
     });
   }
