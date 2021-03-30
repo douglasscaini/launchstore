@@ -1,3 +1,9 @@
+.container {
+  --status-open: rgb(2, 173, 224);
+  --status-sold: rgb(7, 139, 40);
+  --status-canceled: rgb(243, 82, 82);
+}
+
 .order-success,
 .order-error {
   padding: 0;
@@ -30,7 +36,7 @@
 
 .orders .item-container {
   display: grid;
-  grid-template-columns: 1fr auto auto 100px;
+  grid-template-columns: 1fr auto auto 100px 100px;
   grid-gap: 32px;
   align-items: center;
   color: #444;
@@ -89,13 +95,100 @@
 }
 
 .orders .status.open {
-  background-color: rgb(0, 195, 255);
+  background-color: var(--status-open);
 }
 
 .orders .status.sold {
-  background-color: rgb(7, 139, 40);
+  background-color: var(--status-sold);
 }
 
 .orders .status.canceled {
-  background-color: rgb(243, 82, 82);
+  background-color: var(--status-canceled);
+}
+
+.order-detail {
+  max-width: 700px;
+}
+
+.order-detail .info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.order-detail .info h4 {
+  color: #777;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.order-detail .info .status {
+  text-align: right;
+}
+
+.order-detail .info .status.open h2 {
+  color: var(--status-open);
+}
+
+.order-detail .info .status.sold h2 {
+  color: var(--status-sold);
+}
+
+.order-detail .info .status.canceled h2 {
+  color: var(--status-canceled);
+}
+
+.order-detail .info .status p {
+  color: #777;
+  font-size: 12px;
+}
+
+.order-detail .product {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #eeee;
+  border-bottom: 1px solid #eeee;
+  padding: 16px 0;
+  margin-bottom: 16px;
+}
+
+.order-detail .product img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.order-detail .price {
+  color: #555;
+  font-weight: bold;
+  text-align: right;
+  flex: 1;
+}
+
+.order-detail .quantity {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.order-detail .total {
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.order-detail .total span {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 8px;
 }
